@@ -1,13 +1,13 @@
 # TOOP Connector NG
 
+Start with http://wiki.ds.unipi.gr/display/CCTF/ to understand the context of this project.
+
 The TOOP Connector NG is a set of shared utility functions that you CAN include in your DC (Data Consumer) and/or DP (Data Provider) to perform common tasks that are required for a safe and interoperable data exchange. The TOOP Connector NG can be used both as a Java library AND via an REST API.  
 The TOOP Connector NG is a Java only solution. Other environments like .NET etc. are currently not supported.
 
 It uses the shared components from:
 * https://github.com/TOOP4EU/toop-commons-ng
 * https://github.com/TOOP4EU/data-services-directory
-
-Note: this is the successor project of the old [toop-interface](https://github.com/TOOP4EU/toop-interface) and [toop-connector](https://github.com/TOOP4EU/toop-connector) projects.
 
 # Modules
 
@@ -64,19 +64,19 @@ The following configuration properties are **supported** - some of them have def
 * **`toop.tracker.url`** (string) - the URL where the tracker is collecting data elements
 * **`toop.tracker.topic`** (string) - the TOOP tracker topic (left pane)
 * **`toop.dsd.service.baseurl`** (string) - the URL of the DSD
-* **`toop.r2d2.usedns`** (boolean) - use the SML system to dynamically discover partner systems?
-* **`toop.r2d2.sml.name`** (string) - internal name of the SML
-* **`toop.r2d2.sml.dnszone`** (string) - the DNS zone of the SML
-* **`toop.r2d2.sml.serviceurl`** (string) - the management service URL of the SML
-* **`toop.r2d2.sml.clientcert`** (boolean) - is a client certificate need when talking to this SML?
-* **`toop.r2d2.smp.url`** (string) - the absolute URL of the SMP to use, if `toop.r2d2.usedns` is set to `false`
+* **`toop.r2d2.usedns`** (boolean) - use the SML system to dynamically discover partner systems? This should only be `false` for testing purposes. In production this should always be `true`.
+* **`toop.r2d2.sml.name`** (string) - internal name of the SML (only if `toop.r2d2.usedns` is `true`)
+* **`toop.r2d2.sml.dnszone`** (string) - the DNS zone of the SML (only if `toop.r2d2.usedns` is `true`)
+* **`toop.r2d2.sml.serviceurl`** (string) - the management service URL of the SML (only if `toop.r2d2.usedns` is `true`)
+* **`toop.r2d2.sml.clientcert`** (boolean) - is a client certificate need when talking to this SML (only if `toop.r2d2.usedns` is `true`)
+* **`toop.r2d2.smp.url`** (string) - the absolute URL of the SMP to use  (only if `toop.r2d2.usedns` is `false`)
 * **`toop.r2d2.static.endpointurl`** (string) (since 2.1.0) - the absolute URL of the AS4 endpoint URL. **Caution:** if this is used, dynamic discovery id disabled and all messages are send to the same AS4 gateway
 * **`toop.r2d2.static.certificate`** (string) (since 2.1.0) - the PEM encoded X509 certificate of the AS4 gateway. **Caution:** if this is used, dynamic discovery id disabled and all messages are send to the same AS4 gateway
 * **`toop.mem.implementation`** (string) - the ID of the AS4 implementation to use. Can be either `external` or `phase4` - depending on this, different configuration properties must be configured (see below)
 * **`http.proxy.enabled`** (boolean) - is an HTTP proxy needed?
-* **`http.proxy.address`** (string) - the URL of the proxy server (including the scheme)
-* **`http.proxy.port`** (int) - the port to access the HTTP proxy server
-* **`http.proxy.non-proxy`** (string) - a list of hosts that should not be proxied. Use the pipe character as the separator for multiple entries.
+* **`http.proxy.address`** (string) - the URL of the proxy server (including the scheme) (e.g. `http://proxy.local`)
+* **`http.proxy.port`** (int) - the port to access the HTTP proxy server (e.g. `8080`)
+* **`http.proxy.non-proxy`** (string) - a list of hosts that should not be proxied. Use the pipe character as the separator for multiple entries (as in `localhost|127.0.0.1`).
 * **`http.tls.trustall`** (boolean) - use this to disable the hostname and trusted certificate check for SSL/TLS connections
 * **`http.connection-timeout`** (int) - the HTTP connection timeout in milliseconds
 * **`http.read-timeout`** (int) - the HTTP read/socket timeout in milliseconds
@@ -108,7 +108,7 @@ Note: the receiving endpoint for MEM implementation `external` is `/from-as4` - 
 
 ### Properties for MEM implementation `phase4`
 
-Note: since 2.0.2 they must reside in the file "phase4.properties".
+Note: since 2.0.2 they may reside in the file "phase4.properties" (but also work when in the "application.properties" file).
 
 * **`phase4.datapath`** (string) - the absolute path to a local directory to store data
 * **`phase4.debug.http`** (boolean) - enable or disable HTTP debugging for AS4 transmissions. The default value is `false`.
