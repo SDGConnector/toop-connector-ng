@@ -102,7 +102,7 @@ public class ApiPostSend extends AbstractTCAPIInvoker
     for (final TCPayload aPayload : aOutgoingMsg.getPayload ())
     {
       aMessage.addPayload (MEPayload.builder ()
-                                    .mimeType (MimeTypeParser.parseMimeType (aPayload.getMimeType ()))
+                                    .mimeType (MimeTypeParser.safeParseMimeType (aPayload.getMimeType ()))
                                     .contentID (StringHelper.getNotEmpty (aPayload.getContentID (),
                                                                           MEPayload.createRandomContentID ()))
                                     .data (aPayload.getValue ()));

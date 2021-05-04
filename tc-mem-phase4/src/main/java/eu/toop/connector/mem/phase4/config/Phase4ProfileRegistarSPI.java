@@ -33,10 +33,11 @@
  */
 package eu.toop.connector.mem.phase4.config;
 
+import java.util.function.Supplier;
+
 import javax.annotation.Nonnull;
 
 import com.helger.commons.annotation.IsSPIImplementation;
-import com.helger.commons.functional.ISupplier;
 import com.helger.phase4.model.pmode.IPModeIDProvider;
 import com.helger.phase4.profile.AS4Profile;
 import com.helger.phase4.profile.IAS4Profile;
@@ -57,7 +58,7 @@ public final class Phase4ProfileRegistarSPI implements IAS4ProfileRegistrarSPI
 
   public void registerAS4Profile (@Nonnull final IAS4ProfileRegistrar aRegistrar)
   {
-    final ISupplier <? extends IAS4ProfileValidator> aProfileValidatorProvider = () -> null;
+    final Supplier <? extends IAS4ProfileValidator> aProfileValidatorProvider = () -> null;
     final IPModeIDProvider aPModeIDProvider = IPModeIDProvider.DEFAULT_DYNAMIC;
     final IAS4Profile aProfile = new AS4Profile (AS4_PROFILE_ID,
                                                  AS4_PROFILE_NAME,

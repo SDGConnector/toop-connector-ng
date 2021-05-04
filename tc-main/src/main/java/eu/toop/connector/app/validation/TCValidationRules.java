@@ -47,13 +47,13 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
+import com.helger.regrep.CRegRep4;
+import com.helger.regrep.RegRep4Reader;
 import com.helger.ubl23.UBL23NamespaceContext;
 
 import eu.toop.edm.schematron.CEDMSchematron;
 import eu.toop.edm.xml.cagv.CCAGV;
 import eu.toop.edm.xml.cccev.CCCEV;
-import eu.toop.regrep.CRegRep4;
-import eu.toop.regrep.RegRep4Reader;
 
 /**
  * Generic TOOP EDM 2.1.0 validation configuration

@@ -71,7 +71,7 @@
   
   <dependencies>
     <dependency>
-      <groupId>com.helger</groupId>
+      <groupId>com.helger.commons</groupId>
       <artifactId>ph-settings</artifactId>
     </dependency>
     <dependency>

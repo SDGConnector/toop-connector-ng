@@ -61,6 +61,8 @@ import com.helger.phase4.attachment.Phase4OutgoingAttachment;
 import com.helger.phase4.cef.Phase4CEFSender.CEFUserMessageBuilder;
 import com.helger.phase4.crypto.IAS4CryptoFactory;
 import com.helger.phase4.dump.AS4DumpManager;
+import com.helger.phase4.dump.AS4IncomingDumperFileBased;
+import com.helger.phase4.dump.AS4OutgoingDumperFileBased;
 import com.helger.phase4.dynamicdiscovery.AS4EndpointDetailProviderConstant;
 import com.helger.phase4.http.AS4HttpDebug;
 import com.helger.phase4.messaging.domain.MessageHelperMethods;
@@ -69,8 +71,6 @@ import com.helger.phase4.model.pmode.IPModeManager;
 import com.helger.phase4.model.pmode.PMode;
 import com.helger.phase4.model.pmode.PModePayloadService;
 import com.helger.phase4.servlet.AS4ServerInitializer;
-import com.helger.phase4.servlet.dump.AS4IncomingDumperFileBased;
-import com.helger.phase4.servlet.dump.AS4OutgoingDumperFileBased;
 import com.helger.phase4.util.Phase4Exception;
 import com.helger.photon.app.io.WebFileIO;
 import com.helger.servlet.ServletHelper;
@@ -152,7 +152,8 @@ public class Phase4MessageExchangeSPI implements IMessageExchangeSPI
     return ret;
   }
 
-  public void registerIncomingHandler (@Nonnull final ServletContext aServletContext, @Nonnull final IMEIncomingHandler aIncomingHandler)
+  public void registerIncomingHandler (@Nonnull final ServletContext aServletContext,
+                                       @Nonnull final IMEIncomingHandler aIncomingHandler)
   {
     ValueEnforcer.notNull (aServletContext, "ServletContext");
     ValueEnforcer.notNull (aIncomingHandler, "IncomingHandler");
@@ -189,7 +190,11 @@ public class Phase4MessageExchangeSPI implements IMessageExchangeSPI
 
     final IPModeManager aPModeMgr = MetaAS4Manager.getPModeMgr ();
     {
-      final PMode aPMode = TOOPPMode.createTOOPMode ("AnyInitiatorID", "AnyResponderID", "AnyResponderAddress", "TOOP_PMODE", false);
+      final PMode aPMode = TOOPPMode.createTOOPMode ("AnyInitiatorID",
+                                                     "AnyResponderID",
+                                                     "AnyResponderAddress",
+                                                     "TOOP_PMODE",
+                                                     false);
       aPMode.setPayloadService (new PModePayloadService (EAS4CompressionMode.GZIP));
       aPMode.getReceptionAwareness ().setRetry (false);
       aPModeMgr.createOrUpdatePMode (aPMode);
@@ -216,7 +221,8 @@ public class Phase4MessageExchangeSPI implements IMessageExchangeSPI
     if (StringHelper.hasText (sOutgoingDumpPath))
     {
       LOGGER.info ("Dumping outgoing phase4 AS4 messages to '" + sOutgoingDumpPath + "'");
-      AS4DumpManager.setOutgoingDumper (new AS4OutgoingDumperFileBased ( (sMessageID,
+      AS4DumpManager.setOutgoingDumper (new AS4OutgoingDumperFileBased ( (eMsgMode,
+                                                                          sMessageID,
                                                                           nTry) -> new File (_getTargetFolder (sOutgoingDumpPath),
                                                                                              AS4OutgoingDumperFileBased.IFileProvider.getFilename (sMessageID,
                                                                                                                                                    nTry))));
@@ -289,7 +295,8 @@ public class Phase4MessageExchangeSPI implements IMessageExchangeSPI
     }
   }
 
-  public void sendOutgoing (@Nonnull final IMERoutingInformation aRoutingInfo, @Nonnull final MEMessage aMessage) throws MEOutgoingException
+  public void sendOutgoing (@Nonnull final IMERoutingInformation aRoutingInfo,
+                            @Nonnull final MEMessage aMessage) throws MEOutgoingException
   {
     LOGGER.info ("[phase4] sendOutgoing");
     _sendOutgoing (m_aCF, aRoutingInfo, aMessage);

@@ -51,6 +51,7 @@ import com.helger.commons.url.IURLProtocol;
 import com.helger.commons.url.URLProtocolRegistry;
 import com.helger.httpclient.HttpClientManager;
 import com.helger.httpclient.response.ResponseHandlerByteArray;
+import com.helger.regrep.CRegRep4;
 
 import eu.toop.connector.api.TCConfig;
 import eu.toop.connector.api.http.TCHttpClientSettings;
@@ -65,7 +66,6 @@ import eu.toop.connector.api.rest.TCPayload;
 import eu.toop.connector.api.rest.TCPayloadType;
 import eu.toop.connector.api.rest.TCRestJAXB;
 import eu.toop.kafkaclient.ToopKafkaClient;
-import eu.toop.regrep.CRegRep4;
 
 /**
  * Push incoming messages to DC/DP via the HTTP interface.

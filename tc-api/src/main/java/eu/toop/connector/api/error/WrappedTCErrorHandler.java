@@ -88,10 +88,10 @@ public class WrappedTCErrorHandler implements ITCErrorHandler
                          @Nonnull final IToopErrorCode eCode)
   {
     final IError aError = SingleError.builder ()
-                                     .setErrorLevel (eErrorLevel)
-                                     .setErrorText (sMsg)
-                                     .setErrorID (eCode.getID ())
-                                     .setLinkedException (t)
+                                     .errorLevel (eErrorLevel)
+                                     .errorText (sMsg)
+                                     .errorID (eCode.getID ())
+                                     .linkedException (t)
                                      .build ();
     if (m_aFilter == null || m_aFilter.test (aError))
       m_aErrorList.add (aError);

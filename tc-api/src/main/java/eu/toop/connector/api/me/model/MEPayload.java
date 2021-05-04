@@ -50,8 +50,7 @@ import com.helger.commons.io.ByteArrayWrapper;
 import com.helger.commons.mime.IMimeType;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.string.ToStringGenerator;
-
-import eu.toop.regrep.CRegRep4;
+import com.helger.regrep.CRegRep4;
 
 /**
  * A single payload of an AS4 message. Used inside {@link MEMessage}
@@ -125,7 +124,9 @@ public final class MEPayload implements Serializable
       return false;
 
     final MEPayload rhs = (MEPayload) o;
-    return m_aMimeType.equals (rhs.m_aMimeType) && m_sContentID.equals (rhs.m_sContentID) && m_aData.equals (rhs.m_aData);
+    return m_aMimeType.equals (rhs.m_aMimeType) &&
+           m_sContentID.equals (rhs.m_sContentID) &&
+           m_aData.equals (rhs.m_aData);
   }
 
   @Override
