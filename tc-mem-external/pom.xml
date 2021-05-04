@@ -130,6 +130,11 @@
       <artifactId>jetty-servlet</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.sun.xml.ws</groupId>
+      <artifactId>jaxws-rt</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   
   <build>
