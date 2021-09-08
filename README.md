@@ -200,6 +200,10 @@ Do a simple `mvn clean install` on the command line.
 
 # News and Noteworthy
 
+2021-09-08: release of `v2.2.0`
+* New Maven group ID `com.helger.toop`
+* Updated dependencies
+
 2021-01-19: release of `v2.1.1`
 * The project is now dual licensed under Apache License, Version 2.0 and EUPL 1.2
 * Improved the resolution of U-NAPTR records based on upcoming CEF changes in the DNS

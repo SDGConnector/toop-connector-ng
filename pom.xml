@@ -41,13 +41,13 @@
     <artifactId>parent-pom</artifactId>
     <version>1.11.3</version>
   </parent>
-  <groupId>eu.toop</groupId>
+  <groupId>com.helger.toop</groupId>
   <artifactId>tc-parent-pom</artifactId>
-  <version>2.1.2-SNAPSHOT</version>
+  <version>2.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>tc-parent-pom</name>
   <description>Base POM to build the TOOP Connector NG projects</description>
-  <url>https://github.com/toop4eu/toop-connector-ng</url>
+  <url>https://github.com/phax/toop-connector-ng</url>
   <inceptionYear>2020</inceptionYear>
 
   <licenses>
@@ -59,9 +59,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:git@github.com:toop4eu/toop-connector-ng.git</connection>
-    <developerConnection>scm:git:git@github.com:toop4eu/toop-connector-ng.git</developerConnection>
-    <url>http://github.com/toop4eu/toop-connector-ng</url>
+    <connection>scm:git:git@github.com:phax/toop-connector-ng.git</connection>
+    <developerConnection>scm:git:git@github.com:phax/toop-connector-ng.git</developerConnection>
+    <url>http://github.com/phax/toop-connector-ng</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -120,7 +120,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>8.6.1</version>
+        <version>8.6.2</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -141,7 +141,7 @@
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-parent-pom</artifactId>
-        <version>2.1.2</version>
+        <version>2.1.7</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -176,48 +176,48 @@
       </dependency>
 
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>toop-commons-ng-parent-pom</artifactId>
-        <version>2.1.2-SNAPSHOT</version>
+        <version>2.2.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>data-services-directory</artifactId>
-        <version>2.1.2-SNAPSHOT</version>
+        <version>2.2.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
 
       <!-- The sub-projects of this project have a constant version -->
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>tc-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>tc-mem-external</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>tc-mem-phase4</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>tc-main</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>tc-web-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>eu.toop</groupId>
+        <groupId>com.helger.toop</groupId>
         <artifactId>tc-webapp</artifactId>
         <version>${project.version}</version>
         <classifier>classes</classifier>
